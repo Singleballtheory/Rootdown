@@ -1,5 +1,5 @@
 import React from "react";
-import Drink from "./Drink";
+import DrinkControl from "./DrinkControl";
 import Header from "./Header";
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
       <hr/>
       </div>
       <div>
-      <Drink />
+      <DrinkControl />
       </div>
     </React.Fragment>
   );
