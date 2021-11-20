@@ -1,4 +1,5 @@
 import React from "react";
+import NewDrinkForm from "./NewDrinkForm";
 import DrinkList from "./DrinkList";
 import DrinkDetail from "./DrinkDetail";
 
@@ -45,12 +46,19 @@ class DrinkControl extends React.Component {
     }
   };
 
+  handleAddingNewDrinkToList = (newDrink) => {
+    const newMainDrinkList = this.state.mainDrinkList.concat(newDrink);
+    this.setState({ mainDrinkList: newMainDrinkList, formVisibleOnPage: false });
+  };
+
   handleChangingSelectedDrink = (id) => {
     const selectedDrink = this.state.mainDrinkList.filter(
       (drink) => drink.id === id
     )[0];
     this.setState({ selectedDrink: selectedDrink });
   };
+
+
 
   render() {
     let currentlyVisibleState = null;
@@ -63,11 +71,11 @@ class DrinkControl extends React.Component {
         />
       );
       buttonText = "Return to Drink List";
-    // } else if (this.state.formVisibleOnPage) {
-    //   currentlyVisibleState = (
-    //     <NewDrinkForm onNewDrinkCreation={this.handleAddingNewDrinkToList} />
-    //   );
-    //   buttonText = "Return to Drink List";
+    } else if (this.state.formVisibleOnPage) {
+      currentlyVisibleState = (
+        <NewDrinkForm onNewDrinkCreation={this.handleAddingNewDrinkToList} />
+      );
+      buttonText = "Return to Drink List";
     } else {
       currentlyVisibleState = (
         <DrinkList

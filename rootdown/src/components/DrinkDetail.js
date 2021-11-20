@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Drink from "./Drink";
 
 function DrinkDetail(props) {
   const { drink } = props;
@@ -9,9 +8,7 @@ function DrinkDetail(props) {
     <React.Fragment>
       <h1>{drink.name}</h1>
       <p>{drink.description}</p>
-      <p>
-        Price per pint: <em>{drink.price}</em>
-      </p>
+      <p>Price per pint: <em>{drink.price}</em></p>
       <p>Available pints: {drink.pints}</p>
       <hr />
       <button onClick={props.onClickingPurchase}>Purchase a Pint</button>
