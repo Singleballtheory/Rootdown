@@ -22,7 +22,7 @@ Drink.propTypes = {
   description: PropTypes.string,
   pints: PropTypes.number,
   id: PropTypes.string,
-  whenItemClicked: PropTypes.func
+  whenDrinkClicked: PropTypes.func
 };
 
 export default Drink;
