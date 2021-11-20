@@ -41,7 +41,7 @@ class DrinkControl extends React.Component {
       });
     } else {
       this.setState((prevState) => ({
-        formVisibleOnpage: !prevState.formVisibleOnPage,
+        formVisibleOnPage: !prevState.formVisibleOnPage,
       }));
     }
   };
