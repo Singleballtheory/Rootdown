@@ -64,7 +64,7 @@ class DrinkControl extends React.Component {
     console.log(purchaseDrink);
 
     if (purchaseDrink.pints <= 0) {
-      
+
       alert(purchaseDrink.name + " is out of stack.");
     } else {
       purchaseDrink = purchaseDrink.pints--;
@@ -74,6 +74,17 @@ class DrinkControl extends React.Component {
       });
     }
   };
+
+  handleRestockDrink = () => {
+    let restockDrink = this.state.mainDrinkList.filter(drink => drink.id === this.state.selectedDrink.id)[0];
+    
+
+      restockDrink.pints +=124;
+
+      this.setState({
+        restockDrink: restockDrink
+      });
+    }
 
 
 
@@ -86,6 +97,7 @@ class DrinkControl extends React.Component {
         <DrinkDetail
           drink={this.state.selectedDrink}
           onClickingPurchase={this.handlePurchaseDrink}
+          onClickingRestock={this.handleRestockDrink}
         />
       );
       buttonText = "Return to Drink List";
