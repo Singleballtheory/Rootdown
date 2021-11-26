@@ -8,13 +8,13 @@ const mainDrinkList = [
     name: "BeetleJuice",
     price: "5",
     description: "Who has two thumbs and enjoys a fresh pint of beet juice? If you just pointed your thumbs at yourself then you do! Served at room temperature with a hollowed out Slim Jim for a straw.",
-    pints: 124,
+    pints: 5,
     id: "1"
   },
   {
     name: "20/20",
     price: "5",
-    description: "Carrots: Nature's earplugs. Well we've taken that technology and liquified it so you can enjoy the sweet, sweet taste of silence that comes from knowing no one will ever talk to person who talks to carrots. Shot of Mad Dog available upon request.",
+    description: "Carrots: Nature's earplugs. We've taken that technology and liquified it so you can enjoy the sweet, sweet taste of silence that comes from knowing no one will ever talk to a person who talks to carrots. Shot of Mad Dog available upon request.",
     pints: 5,
     id:  "2"
   }
@@ -58,6 +58,23 @@ class DrinkControl extends React.Component {
     this.setState({ selectedDrink: selectedDrink });
   };
 
+  handlePurchaseDrink = () => {
+    let purchaseDrink = this.state.mainDrinkList.filter(drink => drink.id === this.state.selectedDrink.id)[0];
+
+    console.log(purchaseDrink);
+
+    if (purchaseDrink.pints <= 0) {
+      
+      alert(purchaseDrink.name + " is out of stack.");
+    } else {
+      purchaseDrink = purchaseDrink.pints--;
+
+      this.setState({
+        purchaseDrink: purchaseDrink,
+      });
+    }
+  };
+
 
 
   render() {
@@ -68,6 +85,7 @@ class DrinkControl extends React.Component {
       currentlyVisibleState = (
         <DrinkDetail
           drink={this.state.selectedDrink}
+          onClickingPurchase={this.handlePurchaseDrink}
         />
       );
       buttonText = "Return to Drink List";
